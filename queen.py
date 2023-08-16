@@ -7,15 +7,8 @@ y1 = int(y1)
 y2 = int(y2)
 
 movements = []
-end = False
 
-
-if x1 == x2 and y1 == y2 and x1 == y1:
-    if x1 == 0:
-        end = True
-
-
-while not end:
+while x1 != 0:
     
     difx = abs(x1 - x2)
     dify = abs(y1 - y2)
@@ -25,7 +18,9 @@ while not end:
             movements.append(0)
         else:
             movements.append(1)
-    else: 
+    elif difx == 0 or dify == 0:
+        movements.append(1)
+    else:
         movements.append(2)
 
     read = input()
@@ -35,10 +30,6 @@ while not end:
     x2 = int(x2)
     y1 = int(y1)
     y2 = int(y2)
-
-    if x1 == x2 and y1 == y2 and x1 == y1:
-        if x1 == 0:
-            end = True
 
 
 for move in movements:
