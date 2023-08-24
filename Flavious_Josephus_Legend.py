@@ -8,27 +8,40 @@ for i in range(testCases):
     size = int(n)
     skip = int(k)
 
-    sucideSquad = []
+    suicideSquad = []
     for n in range(size):
         if n != skip-1:
-            sucideSquad.append(1)
+            suicideSquad.append(1)
         else:
-            sucideSquad.append(0)
+            suicideSquad.append(0)
     
-    lastSuicide = skip
+    start = skip
     k = 0
     suicides = 1
-    while suicides < size - 1:
-        for j in range(lastSuicide, size):
+    
+    while k < skip:
+        for j in range(start, size):
 
-            if sucideSquad[j]:
+            if suicideSquad[j]:
                 k += 1
 
             if k < skip:
                 if j == size-1:
-                    j = 0
+                    start = 0
 
             if k == skip:
-                lastSuicide = j
-                sucideSquad[j] = 0
+                start = j
+                suicideSquad[j] = 0
                 suicides += 1
+                if suicides < size-1:
+                    k = 0
+                else:
+                    break
+
+    saved = suicideSquad.index(1) + 1
+    results.append(saved)
+
+i = 1
+for saved in results:
+    print(f"Case {i}: {saved}")
+    i += 1
